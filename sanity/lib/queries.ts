@@ -11,8 +11,13 @@ export const CATEGORIES_QUERY = groq`*[_type == "category" && !defined(parent)]{
   }
 }`;
 
-export const POSTS_QUERY = groq`*[_type == "post" && defined(slug.current)][0...10]{
-  _id, title, slug, duration, mainImage, categories[]-> {
+export const POSTS_QUERY = groq`*[_type == "post" && defined(slug.current) && (!defined($categorySlug) || $categorySlug in categories[]->slug.current)][0...10]{
+  _id,
+  title,
+  slug,
+  duration,
+  mainImage,
+  categories[]-> {
     _id,
     title,
     slug

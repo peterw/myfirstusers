@@ -6,17 +6,18 @@ import {
 } from '../../../sanity.types';
 import HomeArticles from '@/components/homeArticles';
 
-async function getData() {
+async function getData(categorySlug: string) {
   const [categories, posts] = await Promise.all([
     client.fetch<CATEGORIES_QUERYResult>(CATEGORIES_QUERY),
-    client.fetch<POSTS_QUERYResult>(POSTS_QUERY),
+    client.fetch<POSTS_QUERYResult>(POSTS_QUERY, {
+      categorySlug,
+    }),
   ]);
-  // TODO get data from sanity
   return { categories, posts };
 }
 
-const MarketingDashboard = async () => {
-  const { categories, posts } = await getData();
+const CategoryPage = async ({ params }: { params: { cat: string } }) => {
+  const { categories, posts } = await getData(params.cat);
   return (
     <div className="p-4 min-h-screen">
       <HomeArticles categories={categories} posts={posts} />
@@ -24,4 +25,4 @@ const MarketingDashboard = async () => {
   );
 };
 
-export default MarketingDashboard;
+export default CategoryPage;
