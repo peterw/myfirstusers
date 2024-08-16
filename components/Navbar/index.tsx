@@ -2,21 +2,26 @@ import Link from 'next/link';
 
 export const Navbar = () => {
   return (
-    <div className="w-full">
-      <nav className="container relative flex flex-wrap items-center justify-between p-2 mx-auto lg:justify-between xl:px-0">
-        <div className="flex flex-wrap items-center justify-between w-full lg:w-auto">
+    <div className="w-full border-b border-gray-50 pb-1">
+      <nav className="container flex flex-row items-center p-2 mx-auto xl:px-0 space-x-7">
+        <div className="flex flex-wrap">
           <Link href="/">
-            <span className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
+            <span className="flex items-center space-x-2 text-2xl font-extrabold">
               <span>MyFirstUser</span>
             </span>
           </Link>
         </div>
-
-        <div className="hidden text-center lg:flex lg:items-center"></div>
-
-        <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-          {' '}
-          <div className="flex mt-5 space-x-5 text-gray-400 dark:text-gray-500">
+        <div className="flex justify-between w-full">
+          <div className="border-gray-200 border p-2 rounded-2xl hidden lg:flex flex-row">
+            <input
+              className="outline-none px-4 py-2 rounded-lg text-sm text-gray-700 mr-2 w-80"
+              placeholder="Get 6 new tips in your inbox every Monday"
+            />
+            <button className="bg-stone-900 hover:bg-stone-700 transition-colors px-4 py-2 rounded-lg text-sm font-semibold text-white">
+              Yes Please :)
+            </button>
+          </div>
+          <div className="hidden lg:flex space-x-5 text-gray-400 dark:text-gray-500 items-center">
             <a href="https://twitter.com/" target="_blank" rel="noopener">
               <span className="sr-only">Twitter</span>
               <Twitter />
@@ -33,6 +38,22 @@ export const Navbar = () => {
               <span className="sr-only">Linkedin</span>
               <Linkedin />
             </a>
+          </div>
+          <div className="lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
+              />
+            </svg>
           </div>
         </div>
       </nav>
