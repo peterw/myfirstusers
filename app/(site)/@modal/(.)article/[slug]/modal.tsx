@@ -15,7 +15,7 @@ export default function ModalContent({ post }: { post: POST_QUERYResult }) {
 
   return (
     <Modal title={post?.title ?? ''} onClose={() => router.back()}>
-      <div className="">
+      <div>
         {imageSource && (
           <div className="relative w-full h-64 md:h-96">
             <Image
