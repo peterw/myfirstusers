@@ -1,16 +1,20 @@
 import { PortableText } from '@portabletext/react';
 import { Image } from '@/components/SanityImage';
 import { POST_QUERYResult } from '@/sanity.types';
+import { transformImageSource } from '@/lib/utils';
 
 export default function Content({ post }: { post: POST_QUERYResult }) {
+  const imageSource = post?.mainImage
+    ? transformImageSource(post.mainImage)
+    : undefined;
   return (
     <>
       <div className="">
-        {post?.mainImage && (
+        {imageSource && (
           <div className="relative w-full h-64 md:h-96">
             <Image
-              src={post?.mainImage}
-              alt={post?.title}
+              src={imageSource}
+              alt={post?.title ?? ''}
               fill
               style={{ objectFit: 'cover' }}
             />

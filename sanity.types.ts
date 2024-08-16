@@ -194,6 +194,7 @@ export type Category = {
   _rev: string;
   title?: string;
   slug?: Slug;
+  order?: number;
   parent?: {
     _ref: string;
     _type: "reference";
@@ -224,7 +225,7 @@ export type CATEGORIES_QUERYResult = Array<{
   }>;
 }>;
 // Variable: POSTS_QUERY
-// Query: *[_type == "post" && defined(slug.current)][0...10]{  _id, title, slug, duration, mainImage, categories[]-> {    _id,    title,    slug  }}
+// Query: *[_type == "post" && defined(slug.current) && (!defined($categorySlug) || $categorySlug in categories[]->slug.current)][0...10]{  _id,  title,  slug,  duration,  mainImage,  categories[]-> {    _id,    title,    slug  }}
 export type POSTS_QUERYResult = Array<{
   _id: string;
   title: string | null;

@@ -4,25 +4,30 @@ import { useRouter } from 'next/navigation';
 import Modal from '@/components/Modal';
 import { Image } from '@/components/SanityImage';
 import { POST_QUERYResult } from '@/sanity.types';
+import { transformImageSource } from '@/lib/utils';
 
 export default function ModalContent({ post }: { post: POST_QUERYResult }) {
   const router = useRouter();
 
+  const imageSource = post?.mainImage
+    ? transformImageSource(post.mainImage)
+    : undefined;
+
   return (
     <Modal title={post?.title ?? ''} onClose={() => router.back()}>
       <div className="">
-        {post?.mainImage && (
+        {imageSource && (
           <div className="relative w-full h-64 md:h-96">
             <Image
-              src={post?.mainImage}
-              alt={post?.title}
+              src={imageSource}
+              alt={post?.title ?? ''}
               fill
               style={{ objectFit: 'cover' }}
             />
           </div>
         )}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center text-white text-sm">
+        <div className="flex items-center justify-between m-2">
+          <div className="flex items-center text-sm">
             <svg
               className="w-4 h-4"
               xmlns="http://www.w3.org/2000/svg"
