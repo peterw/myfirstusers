@@ -1,4 +1,3 @@
-'use client';
 import Link from 'next/link';
 
 export const Navbar = () => {
@@ -12,7 +11,7 @@ export const Navbar = () => {
             </span>
           </Link>
         </div>
-        
+
         <div className="hidden text-center lg:flex lg:items-center"></div>
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">

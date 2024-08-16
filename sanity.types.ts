@@ -224,12 +224,23 @@ export type CATEGORIES_QUERYResult = Array<{
   }>;
 }>;
 // Variable: POSTS_QUERY
-// Query: *[_type == "post" && defined(slug.current)][0...10]{  _id, title, slug, duration, categories[]-> {    _id,    title,    slug  }}
+// Query: *[_type == "post" && defined(slug.current)][0...10]{  _id, title, slug, duration, mainImage, categories[]-> {    _id,    title,    slug  }}
 export type POSTS_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
   duration: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
   categories: Array<{
     _id: string;
     title: string | null;
@@ -237,7 +248,7 @@ export type POSTS_QUERYResult = Array<{
   }> | null;
 }>;
 // Variable: POST_QUERY
-// Query: *[_type == "post" && slug.current == $slug][0]{  title, description, content, duration, publishedAt, categories[]-> {    _id,    title,    slug,  }}
+// Query: *[_type == "post" && slug.current == $slug][0]{  title, description, content, duration, mainImage, publishedAt, categories[]-> {    _id,    title,    slug,  }}
 export type POST_QUERYResult = {
   title: string | null;
   description: string | null;
@@ -272,6 +283,17 @@ export type POST_QUERYResult = {
     _key: string;
   }> | null;
   duration: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
   publishedAt: string | null;
   categories: Array<{
     _id: string;
