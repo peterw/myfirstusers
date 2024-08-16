@@ -6,7 +6,9 @@ import HomeArticles from '@/components/homeArticles';
 async function getData() {
   const [categories, posts] = await Promise.all([
     client.fetch<CATEGORIES_QUERYResult>(CATEGORIES_QUERY),
-    client.fetch<POSTS_QUERYResult>(POSTS_QUERY),
+    client.fetch<POSTS_QUERYResult>(POSTS_QUERY, {
+      categorySlug: null,
+    }),
   ]);
   // TODO get data from sanity
   return { categories, posts };

@@ -1,4 +1,4 @@
-import {defineType, defineField} from 'sanity'
+import { defineType, defineField } from 'sanity';
 
 export const category = defineType({
   type: 'document',
@@ -11,12 +11,16 @@ export const category = defineType({
     defineField({
       type: 'slug',
       name: 'slug',
-      options: {source: 'title'},
+      options: { source: 'title' },
+    }),
+    defineField({
+      type: 'number',
+      name: 'order',
     }),
     defineField({
       type: 'reference',
       name: 'parent',
-      to: [{type: 'category'}],
+      to: [{ type: 'category' }],
     }),
   ],
-})
+});

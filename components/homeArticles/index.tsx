@@ -26,6 +26,7 @@ export default function HomeArticles({
       </div>
 
       <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.length === 0 && <>No more posts..</>}
         {posts.map((post) => {
           return (
             <Link

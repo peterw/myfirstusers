@@ -1,9 +1,6 @@
 import { client } from '@/sanity/lib/client';
 import { POSTS_QUERY, CATEGORIES_QUERY } from '@/sanity/lib/queries';
-import {
-  POSTS_QUERYResult,
-  CATEGORIES_QUERYResult,
-} from '../../../sanity.types';
+import { POSTS_QUERYResult, CATEGORIES_QUERYResult } from '@/sanity.types';
 import HomeArticles from '@/components/homeArticles';
 
 async function getData(categorySlug: string) {
