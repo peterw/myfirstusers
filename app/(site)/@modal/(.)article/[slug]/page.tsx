@@ -5,9 +5,17 @@ import { POST_QUERYResult } from '@/sanity.types';
 import ModalContent from './modal';
 
 async function getData(slug: string) {
-  const post = await client.fetch<POST_QUERYResult>(POST_QUERY, {
-    slug,
-  });
+  const post = await client.fetch<POST_QUERYResult>(
+    POST_QUERY,
+    {
+      slug,
+    },
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
+  );
   return { post };
 }
 
