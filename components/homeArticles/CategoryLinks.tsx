@@ -22,7 +22,7 @@ export default function CategoryLinks({
   const pathname = usePathname();
   const [isNavShown] = useRecoilState(navState);
   return (
-    <div className={` lg:block`}>
+    <div className={`${!isNavShown && 'hidden'} lg:block`}>
       {categories.map((category, index) => (
         <div key={index} className="mb-6">
           <h2 className="font-bold text-l italic ">
