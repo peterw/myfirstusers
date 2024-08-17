@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-
+import RecoilContextProvider from './RecoilProvider';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
@@ -22,10 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        {children}
-        {modal}
-        <Footer />
+        <RecoilContextProvider>
+          <>
+            <Navbar />
+            {children}
+            {modal}
+            <Footer />
+          </>
+        </RecoilContextProvider>
       </body>
     </html>
   );

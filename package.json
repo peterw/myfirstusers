@@ -24,6 +24,7 @@
     "next-sanity": "^9.4.5",
     "react": "^18",
     "react-dom": "^18",
+    "recoil": "^0.7.7",
     "sanity": "^3.54.0",
     "styled-components": "^6.1.12",
     "tailwind-merge": "^2.5.2",

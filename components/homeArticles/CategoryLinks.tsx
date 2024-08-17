@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useRecoilState } from 'recoil';
+import { navState } from '@/lib/state/app';
 import { CATEGORIES_QUERYResult } from '@/sanity.types';
 
 const categoryColors = [
@@ -18,9 +20,9 @@ export default function CategoryLinks({
   categories: CATEGORIES_QUERYResult;
 }) {
   const pathname = usePathname();
-  console.log(pathname);
+  const [isNavShown] = useRecoilState(navState);
   return (
-    <>
+    <div className={` lg:block`}>
       {categories.map((category, index) => (
         <div key={index} className="mb-6">
           <h2 className="font-bold text-l italic ">
@@ -39,6 +41,6 @@ export default function CategoryLinks({
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 }

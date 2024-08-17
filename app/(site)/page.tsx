@@ -32,7 +32,7 @@ async function getData() {
   return { categories, posts };
 }
 
-const MarketingDashboard = async () => {
+const Homepage = async () => {
   const { categories, posts } = await getData();
   return (
     <div className="p-4 min-h-screen">
@@ -41,4 +41,4 @@ const MarketingDashboard = async () => {
   );
 };
 
-export default MarketingDashboard;
+export default Homepage;
